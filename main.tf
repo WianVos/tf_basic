@@ -103,9 +103,4 @@ resource "aws_instance" "basic" {
     source      = "./ssh_keys/rsa"
     destination = "/home/ubuntu/.ssh/rsa"
   }
-
-  provisioner "file" {
-    source      = "./ssh_keys/rsa.pub"
-    destination = "/opt/ansible/keys/rsa.pub"
-  }
 }
