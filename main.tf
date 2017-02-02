@@ -127,6 +127,6 @@ resource "aws_instance" "basic" {
 
   provisioner "file" {
     content     = "${data.template_file.consul_agent_config.rendered}"
-    description = "/etc/systemd/system/consul.d/consul_agent.json"
+    destination = "/etc/systemd/system/consul.d/consul_agent.json"
   }
 }
