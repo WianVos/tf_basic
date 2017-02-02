@@ -18,7 +18,12 @@ variable "private_subnet_cidr" {
   default = "0.0.0.0/0"
 }
 
-#number of consul servers
+#number of  servers
 variable "basic_count" {
   default = 2
+}
+
+#consul servers to join
+variable "consul_server_addr" {
+  default = ""
 }

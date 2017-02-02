@@ -71,6 +71,14 @@ resource "aws_security_group" "basic" {
   }
 }
 
+data "template_file" "consul_agent_config" {
+  template = "${file("environments/basic/templates/consul_agent.json")}"
+
+  vars {
+    consul_server_addr = "${var.consul_server_addr}"
+  }
+}
+
 # this bit creates the instance
 # pretty straight forward stuff
 
@@ -99,8 +107,26 @@ resource "aws_instance" "basic" {
     Name = "basic-${count.index}"
   }
 
+  #
+  provisioner "file" {
+    source      = "./environments/deathstar/files/consul.service"
+    destination = "/tmp/consul.service"
+  }
+
+  provisioner "remote-exec" {
+    scripts = [
+      "./environments/deathstar/scripts/consul_install.sh",
+      "./environments/deathstar/scripts/consul_service.sh",
+    ]
+  }
+
   provisioner "file" {
     source      = "./ssh_keys/rsa"
     destination = "/home/ubuntu/.ssh/rsa"
+  }
+
+  provisioner "file" {
+    content     = "${data.template_file.consul_agent_config}"
+    description = "/etc/systemd/system/consul.d/consul_agent.json"
   }
 }
