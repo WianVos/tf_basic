@@ -109,14 +109,14 @@ resource "aws_instance" "basic" {
 
   #
   provisioner "file" {
-    source      = "./environments/deathstar/files/consul.service"
+    source      = "./basic/files/consul.service"
     destination = "/tmp/consul.service"
   }
 
   provisioner "remote-exec" {
     scripts = [
-      "./environments/deathstar/scripts/consul_install.sh",
-      "./environments/deathstar/scripts/consul_service.sh",
+      "./environments/basic/scripts/consul_install.sh",
+      "./environments/basic/scripts/consul_service.sh",
     ]
   }
 
