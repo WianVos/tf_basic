@@ -20,7 +20,7 @@ variable "private_subnet_cidr" {
 
 #number of  servers
 variable "basic_count" {
-  default = 2
+  default = 4
 }
 
 #consul servers to join
