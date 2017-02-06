@@ -44,14 +44,12 @@ resource "aws_security_group" "basic" {
     from_port = 0
     to_port   = 65535
     protocol  = "tcp"
-    self      = true
   }
 
   ingress {
     from_port = 0
     to_port   = 65535
     protocol  = "udp"
-    self      = true
   }
 
   // These are for maintenance
