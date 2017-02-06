@@ -4,5 +4,5 @@
     "data_dir": "/etc/consul.d",
     "log_level": "TRACE",
     "enable_syslog": true,
-    "start_join": "['${consul_server_addr}']"
+    "start_join": ["${consul_server_addr}"]
 }
