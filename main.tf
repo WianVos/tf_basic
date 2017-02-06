@@ -113,6 +113,11 @@ resource "aws_instance" "basic" {
     destination = "/tmp/consul.service"
   }
 
+  provisioner "file" {
+    content     = "${data.template_file.consul_agent_config.rendered}"
+    destination = "/tmp/consul_agent.json"
+  }
+
   provisioner "remote-exec" {
     scripts = [
       "./environments/basic/scripts/consul_install.sh",
@@ -123,10 +128,5 @@ resource "aws_instance" "basic" {
   provisioner "file" {
     source      = "./ssh_keys/rsa"
     destination = "/home/ubuntu/.ssh/rsa"
-  }
-
-  provisioner "file" {
-    content     = "${data.template_file.consul_agent_config.rendered}"
-    destination = "/etc/systemd/system/consul.d/consul_agent.json"
   }
 }

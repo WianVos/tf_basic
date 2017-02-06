@@ -39,3 +39,5 @@ sudo chmod 0644 /etc/systemd/system/consul.service
 sudo mv /tmp/consul_flags /etc/default/consul
 sudo chown root:root /etc/default/consul
 sudo chmod 0644 /etc/default/consul
+sudo mv /tmp/consul_agent.json /etc/systemd/system/consul.d/consul_agent.json
+sudo chmod 0644 /etc/systemd/system/consul.d/consul_agent.json
