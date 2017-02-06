@@ -1,6 +1,6 @@
 {
     "server": false,
-    "datacenter": "nyc1",
+    "datacenter": "dc1",
     "data_dir": "/etc/consul.d",
     "log_level": "TRACE",
     "enable_syslog": true,
