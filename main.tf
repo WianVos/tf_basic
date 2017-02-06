@@ -109,7 +109,7 @@ resource "aws_instance" "basic" {
 
   #
   provisioner "file" {
-    source      = "./basic/files/consul.service"
+    source      = "./environments/basic/files/consul.service"
     destination = "/tmp/consul.service"
   }
 
